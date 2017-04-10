@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 import os
 import sys
+import thread
+
+# def start_smtp(self):
+#     import smtp
+#     smtp.start()
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "MailServer.settings")
@@ -19,4 +24,6 @@ if __name__ == "__main__":
                 "forget to activate a virtual environment?"
             )
         raise
+    # thread.start_new_thread(start_smtp,(None,))
     execute_from_command_line(sys.argv)
+

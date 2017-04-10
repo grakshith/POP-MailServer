@@ -6,7 +6,13 @@
  <div class="container">
     <div class="row">
         <div class="jumbotron">
-            <h2>Hello {{user}}</h2>
+            <h2>Hello {{user}} - {{ user.email }}</h2>
+            <h3>Your Mail</h3>
+            <ul>
+            {% for message in messages %}
+            <li> {{ message }}
+            {% endfor %}
+            </ul>
         </div>
     </div>
 </div>

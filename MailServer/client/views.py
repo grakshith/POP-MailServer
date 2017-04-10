@@ -6,15 +6,16 @@ from django.contrib.auth import logout
 from django.http import HttpResponse
 from .forms import ComposeForm
 import cli
+from .models import User,Message
 app_name='client'
-@login_required(login_url="login/")
+@login_required(login_url="/login/")
 def home(request):
 	if(request.user.is_authenticated()):
-
-		return render(request,'client/home.html')
+		messages=Message.objects.filter(to=str(request.user.email))
+		return render(request,'client/home.html',{'messages':messages})
 	else:
-		return redirect('login/')
-
+		return redirect('/login/')
+@login_required(login_url="/")
 def compose(request):
 	if(request.method=='GET'):
 		form=ComposeForm()
