@@ -6,5 +6,6 @@ from . import views
 urlpatterns = [
 	url(r'^$',views.home,name='redirect'),
 	url(r'^login/$',auth_views.login,{'template_name':'client/login.html'}, name='login'),
+	url(r'^compose/',views.compose,name='compose'),
 	url(r'^logout/$',views.user_logout,name='logout'),
 ]

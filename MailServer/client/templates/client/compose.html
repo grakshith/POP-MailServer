@@ -1,0 +1,54 @@
+{% extends 'client/base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+        <h2>Compose Mail</h2>
+            <form action="" method="post">
+            {% csrf_token %}
+                <p class="bs-component">
+                    <div class="form-group">
+                      <label class="required" for="id_name">{{ form.to.label_tag }}</label>
+                      {{ form.to }}
+                        {% if form.errors %}
+                            {% for error in form.to.errors %}
+                                <td>
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                    <label class="required" for="id_name">{{ form.from_field.label_tag }}</label>
+                      {{ form.from_field }}
+                      
+                        {% if form.errors %}
+                            {% for error in form.from_field.errors %}
+                                <td>
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                        <div class="form-group">
+                        <label class="required" for="id_name">{{ form.subject.label_tag }}</label>
+                      {{ form.subject }}
+                    </div>
+                    <div class="form-group">
+                    <label class="required" for="id_name">{{ form.body.label_tag }}</label>
+                      {{ form.body }}
+                    </div>
+                </p>
+                <p class="bs-component">
+                        <input class="btn btn-success btn-sm" type="submit" value="Submit" />
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
