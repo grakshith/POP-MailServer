@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group">
                     <label class="required" for="id_name">{{ form.from_field.label_tag }}</label>
-                      {{ form.from_field }}
+                      <input id="id_from_field" maxlength="100" name="from_field" type="email" value="{{user.email}}" readonly />
                       
                         {% if form.errors %}
                             {% for error in form.from_field.errors %}

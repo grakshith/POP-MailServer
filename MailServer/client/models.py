@@ -16,5 +16,5 @@ class Message(models.Model):
 	body=models.TextField()
 	user=models.ForeignKey(User,on_delete=models.CASCADE)
 	def __str__(self):
-		return str(self.subject+' -- '+self.to)
+		return str(self.subject+' - From -  '+self.from_field)
 	

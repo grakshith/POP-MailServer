@@ -12,7 +12,8 @@ app_name='client'
 def home(request):
 	if(request.user.is_authenticated()):
 		messages=Message.objects.filter(to=str(request.user.email))
-		return render(request,'client/home.html',{'messages':messages})
+		messages=list(messages)[::-1]
+		return render(request,'client/home.html',{'messages':messages,'len':len(messages)})
 	else:
 		return redirect('/login/')
 @login_required(login_url="/")
@@ -35,3 +36,11 @@ def compose(request):
 def user_logout(request):
 	logout(request)
 	return redirect('/')
+
+def view_mail(request,urlhash):
+	message=Message.objects.filter(pk=urlhash)[0]
+	return render(request,'client/view_mail.html',{'message':message})
+
+def sent(request):
+	messages=Message.objects.filter(from_field=str(request.user.email))
+	return render(request,'client/view_sent.html',{'messages':list(messages)[::-1],'len':len(messages)})

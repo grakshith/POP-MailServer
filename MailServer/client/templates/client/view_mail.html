@@ -1,0 +1,16 @@
+{% extends 'client/base.html' %}
+
+{% block title %}<h1>Home</h1>{% endblock %}
+
+{% block content %}
+ <div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            <h4>From</h4><p>{{message.from_field}}</p>
+            <h4>To</h4><p>{{message.to}}</p>
+            <h4>Subject</h4><p>{{message.subject}}</p>
+            <h4>Body</h4><p>{{message.body}}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'client/base.html' %}
+
+{% block title %}<h1>Home</h1>{% endblock %}
+
+{% block content %}
+ <div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            <h3>Your sent mail</h3>
+            {% if len > 0 %}
+                <ul>
+                {% for message in messages %}
+                <li> <a href=/view/{{ message.id }}>{{message}}</a>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <center>You don't seem to have sent any messages</center>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

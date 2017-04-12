@@ -25,7 +25,7 @@ SECRET_KEY = '^qbo!sgf=7ytzxhs9wk77@)6#o0ix@j=5(0m8gn2s&z05qqrk!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

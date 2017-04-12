@@ -17,12 +17,14 @@ class CustomSMTPServer(smtpd.SMTPServer):
         subject=data.split('\n')[5].split()[1]
         body=data.split('\n')[7]
         user=User.objects.filter(email_id=str(rcpttos[0]))
-        message=Message(to=str(rcpttos[0]),from_field=mailfrom,subject=subject,body=body,user=user[0])
-        message.save()
-        print user
+        if(len(user)>0):
+	        message=Message(to=str(rcpttos[0]),from_field=mailfrom,subject=subject,body=body,user=user[0])
+	        message.save()
+	        print user
+
 
 def start(request):
-	server = CustomSMTPServer(('127.0.0.1', 1025), None)
+	server = CustomSMTPServer(('0.0.0.0', 1025), None)
 	#asyncore.loop()
 	thread.start_new_thread(async,(None,))
 	return HttpResponse("Server Started")
